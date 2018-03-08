@@ -15,6 +15,7 @@
         <module>api-template</module>
         <module>stereotype</module>
         <module>eventbus</module>
+        <module>execution-result</module>
     </modules>
 
     <properties>
