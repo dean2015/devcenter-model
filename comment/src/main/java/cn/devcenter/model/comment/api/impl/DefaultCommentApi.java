@@ -1,6 +1,6 @@
 package cn.devcenter.model.comment.api.impl;
 
-import cn.devcenter.model.apitemplate.exception.NotSupportedException;
+import cn.devcenter.model.template.api.exception.NotSupportedException;
 import cn.devcenter.model.comment.Comment;
 import cn.devcenter.model.comment.api.CommentApi;
 import cn.devcenter.model.comment.dao.CommentDAO;

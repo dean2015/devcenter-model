@@ -1,6 +1,6 @@
 package cn.devcenter.model.approval.api.impl;
 
-import cn.devcenter.model.apitemplate.exception.NotSupportedException;
+import cn.devcenter.model.template.api.exception.NotSupportedException;
 import cn.devcenter.model.approval.ApprovalProcess;
 import cn.devcenter.model.approval.api.ApprovalProcessApi;
 import cn.devcenter.model.approval.dao.ApprovalProcessDAO;

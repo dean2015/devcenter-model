@@ -1,10 +1,8 @@
 package cn.devcenter.model.approval.api;
 
-import cn.devcenter.model.apitemplate.CurdTemplate;
+import cn.devcenter.model.template.api.CurdTemplate;
 import cn.devcenter.model.approval.ApprovalProcessInstance;
 import cn.devcenter.model.approval.ApprovalState;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
 

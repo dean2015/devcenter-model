@@ -1,6 +1,6 @@
 package cn.devcenter.model.comment.api;
 
-import cn.devcenter.model.apitemplate.CurdTemplate;
+import cn.devcenter.model.template.api.CurdTemplate;
 import cn.devcenter.model.comment.Comment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
