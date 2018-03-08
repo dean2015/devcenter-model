@@ -13,10 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-        </dependency>
-        <dependency>
             <groupId>cn.housecenter.dlfc.framework.boot</groupId>
             <artifactId>dlfc-framework-boot</artifactId>
         </dependency>
