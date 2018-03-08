@@ -28,5 +28,9 @@
             <groupId>cn.housecenter.dlfc.framework.starter.data.sync</groupId>
             <artifactId>dlfc-framework-starter-data-sync</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.devcenter.model</groupId>
+            <artifactId>repository</artifactId>
+        </dependency>
     </dependencies>
 </project>

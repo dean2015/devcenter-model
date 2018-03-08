@@ -2,17 +2,16 @@ package cn.devcenter.model.approval;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
 public class ApprovalProcess {
 
-    private String id;
+    private Serializable id;
 
-    private Set<String> approvers;
+    private Set<Serializable> approvers;
 
-    private Integer level;
-
-    private String nextProcessId;
+    private Serializable nextProcessId;
 
 }
