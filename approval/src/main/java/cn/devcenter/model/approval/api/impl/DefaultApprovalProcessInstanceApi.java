@@ -1,15 +1,16 @@
 package cn.devcenter.model.approval.api.impl;
 
+import cn.devcenter.model.apitemplate.exception.NotSupportedException;
 import cn.devcenter.model.approval.ApprovalProcess;
 import cn.devcenter.model.approval.ApprovalProcessInstance;
 import cn.devcenter.model.approval.ApprovalState;
 import cn.devcenter.model.approval.api.ApprovalProcessInstanceApi;
 import cn.devcenter.model.approval.dao.ApprovalProcessDAO;
+import cn.devcenter.model.approval.dao.ApprovalProcessInstanceDAO;
 import cn.devcenter.model.approval.event.AfterApprovedApprovalProcessInstanceEvent;
 import cn.devcenter.model.approval.event.AfterCreateApprovalProcessInstanceEvent;
 import cn.devcenter.model.approval.event.AfterDeleteApprovalProcessInstanceEvent;
 import cn.devcenter.model.approval.event.AfterRejectedApprovalProcessInstanceEvent;
-import cn.devcenter.model.approval.dao.ApprovalProcessInstanceDAO;
 import cn.housecenter.dlfc.framework.boot.stereotype.Service;
 import cn.housecenter.dlfc.framework.data.sync.DistributedLock;
 import cn.housecenter.dlfc.framework.event.DefaultEventBus;
@@ -63,7 +64,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     @Override
     @Transactional
     public void approve(Serializable approvalProcessInstanceId, Serializable approverId, ApprovalState approvalState) {
-        ApprovalProcessInstance approvalProcessInstance = getApprovalProcessInstanceById(approvalProcessInstanceId);
+        ApprovalProcessInstance approvalProcessInstance = findById(approvalProcessInstanceId);
         approvalProcessInstance.setApprovalState(approvalState);
         approvalProcessInstanceDAO.update(approvalProcessInstance);
         if (ApprovalState.APPROVED.equals(approvalState)) {
@@ -77,26 +78,33 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     }
 
     @Override
-    public void createApprovalProcessInstance(ApprovalProcessInstance approvalProcessInstance) {
-        approvalProcessInstanceDAO.save(approvalProcessInstance);
-        defaultEventBus.publish(new AfterCreateApprovalProcessInstanceEvent(approvalProcessInstance));
+    public ApprovalProcessInstance save(ApprovalProcessInstance approvalProcessInstance) {
+        ApprovalProcessInstance api = approvalProcessInstanceDAO.save(approvalProcessInstance);
+        defaultEventBus.publish(new AfterCreateApprovalProcessInstanceEvent(api));
+        return api;
     }
 
     @Override
-    public <T> Page<ApprovalProcessInstance> getApprovalProcessInstances(T condition, Pageable pageable) {
+    public <T> Page<ApprovalProcessInstance> find(T condition, Pageable pageable) {
         return approvalProcessInstanceDAO.find(condition, pageable);
     }
 
     @Override
-    public ApprovalProcessInstance getApprovalProcessInstanceById(Serializable approvalProcessInstanceId) {
+    public ApprovalProcessInstance findById(Serializable approvalProcessInstanceId) {
         return approvalProcessInstanceDAO.findById(approvalProcessInstanceId);
     }
 
     @Override
-    public void deleteApprovalProcessInstance(Serializable approvalProcessInstanceId) {
-        ApprovalProcessInstance approvalProcessInstance = getApprovalProcessInstanceById(approvalProcessInstanceId);
+    public Serializable delete(Serializable approvalProcessInstanceId) {
+        ApprovalProcessInstance approvalProcessInstance = findById(approvalProcessInstanceId);
         approvalProcessInstanceDAO.delete(approvalProcessInstanceId);
         defaultEventBus.publish(new AfterDeleteApprovalProcessInstanceEvent(approvalProcessInstance));
+        return approvalProcessInstance.getId();
+    }
+
+    @Override
+    public Serializable update(ApprovalProcessInstance object) {
+        throw new NotSupportedException();
     }
 
 }
