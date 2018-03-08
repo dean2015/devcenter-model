@@ -9,12 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>repository</artifactId>
+    <artifactId>eventbus</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>cn.devcenter.model</groupId>
-            <artifactId>api-template</artifactId>
-        </dependency>
-    </dependencies>
+
 </project>

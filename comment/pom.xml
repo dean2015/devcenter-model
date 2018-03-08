@@ -9,16 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>approval</artifactId>
+    <artifactId>comment</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>cn.devcenter.model</groupId>
             <artifactId>repository</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.devcenter.model</groupId>
-            <artifactId>eventbus</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.devcenter.model</groupId>

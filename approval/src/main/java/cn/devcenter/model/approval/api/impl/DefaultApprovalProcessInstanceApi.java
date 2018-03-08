@@ -11,13 +11,11 @@ import cn.devcenter.model.approval.event.AfterApprovedApprovalProcessInstanceEve
 import cn.devcenter.model.approval.event.AfterCreateApprovalProcessInstanceEvent;
 import cn.devcenter.model.approval.event.AfterDeleteApprovalProcessInstanceEvent;
 import cn.devcenter.model.approval.event.AfterRejectedApprovalProcessInstanceEvent;
-import cn.housecenter.dlfc.framework.boot.stereotype.Service;
-import cn.housecenter.dlfc.framework.data.sync.DistributedLock;
-import cn.housecenter.dlfc.framework.event.DefaultEventBus;
+import cn.devcenter.model.eventbus.EventPublisher;
+import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -33,7 +31,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     private ApprovalProcessDAO approvalProcessDAO;
 
     @Autowired
-    private DefaultEventBus defaultEventBus;
+    private EventPublisher eventPublisher;
 
     private void moveNextProcess(ApprovalProcessInstance approvalProcessInstance) {
         List<ApprovalProcessInstance> approvalProcessInstanceList = approvalProcessInstanceDAO.findByApprovalProcessId(approvalProcessInstance.getApprovalProcessId());
@@ -60,18 +58,16 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
         }
     }
 
-    @DistributedLock
     @Override
-    @Transactional
     public void approve(Serializable approvalProcessInstanceId, Serializable approverId, ApprovalState approvalState) {
         ApprovalProcessInstance approvalProcessInstance = findById(approvalProcessInstanceId);
         approvalProcessInstance.setApprovalState(approvalState);
         approvalProcessInstanceDAO.update(approvalProcessInstance);
         if (ApprovalState.APPROVED.equals(approvalState)) {
-            defaultEventBus.publish(new AfterApprovedApprovalProcessInstanceEvent(approvalProcessInstance));
+            eventPublisher.publish(new AfterApprovedApprovalProcessInstanceEvent(approvalProcessInstance));
             moveNextProcess(approvalProcessInstance);
         } else if (ApprovalState.REJECTED.equals(approvalState)) {
-            defaultEventBus.publish(new AfterRejectedApprovalProcessInstanceEvent(approvalProcessInstance));
+            eventPublisher.publish(new AfterRejectedApprovalProcessInstanceEvent(approvalProcessInstance));
         } else {
             // do nothing
         }
@@ -80,7 +76,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     @Override
     public ApprovalProcessInstance save(ApprovalProcessInstance approvalProcessInstance) {
         ApprovalProcessInstance api = approvalProcessInstanceDAO.save(approvalProcessInstance);
-        defaultEventBus.publish(new AfterCreateApprovalProcessInstanceEvent(api));
+        eventPublisher.publish(new AfterCreateApprovalProcessInstanceEvent(api));
         return api;
     }
 
@@ -98,7 +94,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     public Serializable delete(Serializable approvalProcessInstanceId) {
         ApprovalProcessInstance approvalProcessInstance = findById(approvalProcessInstanceId);
         approvalProcessInstanceDAO.delete(approvalProcessInstanceId);
-        defaultEventBus.publish(new AfterDeleteApprovalProcessInstanceEvent(approvalProcessInstance));
+        eventPublisher.publish(new AfterDeleteApprovalProcessInstanceEvent(approvalProcessInstance));
         return approvalProcessInstance.getId();
     }
 

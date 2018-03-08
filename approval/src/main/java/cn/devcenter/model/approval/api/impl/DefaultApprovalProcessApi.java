@@ -6,8 +6,8 @@ import cn.devcenter.model.approval.api.ApprovalProcessApi;
 import cn.devcenter.model.approval.dao.ApprovalProcessDAO;
 import cn.devcenter.model.approval.event.AfterCreateApprovalProcessEvent;
 import cn.devcenter.model.approval.event.AfterDeleteApprovalProcessEvent;
-import cn.housecenter.dlfc.framework.boot.stereotype.Service;
-import cn.housecenter.dlfc.framework.event.DefaultEventBus;
+import cn.devcenter.model.eventbus.EventPublisher;
+import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,12 +21,12 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
     private ApprovalProcessDAO approvalProcessService;
 
     @Autowired
-    private DefaultEventBus defaultEventBus;
+    private EventPublisher eventPublisher;
 
     @Override
     public ApprovalProcess save(ApprovalProcess approvalProcess) {
         ApprovalProcess ap = approvalProcessService.save(approvalProcess);
-        defaultEventBus.publish(new AfterCreateApprovalProcessEvent(ap));
+        eventPublisher.publish(new AfterCreateApprovalProcessEvent(ap));
         return ap;
     }
 
@@ -44,7 +44,7 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
     public Serializable delete(Serializable approvalProcessId) {
         ApprovalProcess approvalProcess = findById(approvalProcessId);
         approvalProcessService.delete(approvalProcessId);
-        defaultEventBus.publish(new AfterDeleteApprovalProcessEvent(approvalProcess));
+        eventPublisher.publish(new AfterDeleteApprovalProcessEvent(approvalProcess));
         return approvalProcess.getId();
     }
 
@@ -52,5 +52,5 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
     public Serializable update(ApprovalProcess object) {
         throw new NotSupportedException();
     }
-    
+
 }

@@ -1,24 +1,11 @@
 package cn.devcenter.model.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import cn.devcenter.model.apitemplate.CurdTemplate;
 
-import java.io.Serializable;
-
-public interface BaseRepository<T> {
-
-    T save(T object);
-
-    <E> Page<T> find(E condition, Pageable pageable);
-
-    T findById(Serializable id);
+public interface BaseRepository<T> extends CurdTemplate<T> {
 
     <E> Boolean exists(E condition);
 
     Long count();
-
-    Serializable delete(Serializable id);
-
-    Serializable update(T object);
 
 }
