@@ -15,7 +15,7 @@ public class ApprovalProcessInstance {
 
     private Serializable approver;
 
-    private Object approvalItem;
+    private Serializable approvalItem;
 
     private Serializable approvedUserId;
 
