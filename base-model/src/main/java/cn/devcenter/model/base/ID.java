@@ -1,4 +1,4 @@
-package cn.devcenter.model.authentication;
+package cn.devcenter.model.base;
 
 import lombok.*;
 
@@ -9,10 +9,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Authentication {
+public class ID {
 
     private Serializable id;
-
-    private Serializable secret;
 
 }

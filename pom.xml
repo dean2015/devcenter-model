@@ -17,6 +17,10 @@
         <module>eventbus</module>
         <module>execution-result</module>
         <module>cache</module>
+        <module>authentication</module>
+        <module>authority</module>
+        <module>organization</module>
+        <module>base-model</module>
     </modules>
 
     <properties>
@@ -74,6 +78,11 @@
             <dependency>
                 <groupId>cn.devcenter.model</groupId>
                 <artifactId>execution-result</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>organization</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

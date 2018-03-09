@@ -1,11 +1,15 @@
 package cn.devcenter.model.approval;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class ApprovalProcess {
 
     private Serializable id;

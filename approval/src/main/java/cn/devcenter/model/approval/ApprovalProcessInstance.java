@@ -1,21 +1,25 @@
 package cn.devcenter.model.approval;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class ApprovalProcessInstance {
 
     private Serializable id;
 
     private ApprovalState approvalState;
 
-    private Serializable approver;
+    private Serializable approverId;
 
-    private Serializable approvalItem;
+    private Serializable approvalItemId;
 
     private Serializable approvedUserId;
 
