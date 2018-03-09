@@ -16,6 +16,7 @@
         <module>stereotype</module>
         <module>eventbus</module>
         <module>execution-result</module>
+        <module>cache</module>
     </modules>
 
     <properties>
@@ -63,6 +64,16 @@
             <dependency>
                 <groupId>cn.devcenter.model</groupId>
                 <artifactId>eventbus</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>cache</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>execution-result</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
