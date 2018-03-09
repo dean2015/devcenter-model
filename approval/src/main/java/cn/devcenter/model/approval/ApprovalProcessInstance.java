@@ -17,11 +17,11 @@ public class ApprovalProcessInstance {
 
     private ApprovalState approvalState;
 
-    private Serializable approverId;
+    private Serializable approver;
 
-    private Serializable approvalItemId;
+    private Serializable approvalItem;
 
-    private Serializable approvedUserId;
+    private Serializable approvedUser;
 
     private Serializable approvalProcessId;
 

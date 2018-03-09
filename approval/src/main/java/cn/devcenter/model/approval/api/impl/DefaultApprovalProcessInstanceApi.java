@@ -53,7 +53,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
             newInstance.setApprovalItem(approvalProcessInstance.getApprovalItem());
             newInstance.setApprovalProcessId(nextApprovalProcess.getId());
             newInstance.setNextProcessId(nextApprovalProcess.getNextProcessId());
-            newInstance.setApprovedUserId(approvalProcessInstance.getApprovedUserId());
+            newInstance.setApprovedUser(approvalProcessInstance.getApprovedUser());
             approvalProcessInstanceDAO.save(newInstance);
         }
     }
