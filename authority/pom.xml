@@ -11,5 +11,18 @@
 
     <artifactId>authority</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>cn.devcenter.model</groupId>
+            <artifactId>repository</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.devcenter.model</groupId>
+            <artifactId>stereotype</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.devcenter.model</groupId>
+            <artifactId>execution-result</artifactId>
+        </dependency>
+    </dependencies>
 </project>

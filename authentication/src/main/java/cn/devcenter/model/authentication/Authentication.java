@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Authentication {
+public class Authentication implements Serializable{
 
     /**
      * The identifier of an authentication.
