@@ -79,6 +79,13 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
         }
     }
 
+    @Override
+    public <E> ExecutionResult<Page<Authentication>> find(E condition, Pageable pageable) {
+        Page<Authentication> pagedAuthentication = authenticationDAO.find(condition, pageable);
+        ExecutionResult<Page<Authentication>> result = new ExecutionResult<>();
+        return result.success(pagedAuthentication);
+    }
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

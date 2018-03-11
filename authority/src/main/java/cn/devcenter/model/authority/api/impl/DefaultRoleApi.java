@@ -5,6 +5,8 @@ import cn.devcenter.model.authority.api.RoleApi;
 import cn.devcenter.model.authority.dao.RoleDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
 
@@ -41,5 +43,12 @@ public class DefaultRoleApi implements RoleApi {
     public ExecutionResult<Role> findById(Serializable id) {
         Role role = roleDAO.findById(id);
         return ExecutionResult.newInstance(Role.class).success(role);
+    }
+
+    @Override
+    public <E> ExecutionResult<Page<Role>> find(E condition, Pageable pageable) {
+        Page<Role> pagedRole = roleDAO.find(condition, pageable);
+        ExecutionResult<Page<Role>> result = new ExecutionResult<>();
+        return result.success(pagedRole);
     }
 }
