@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Authentication implements Serializable{
+public class Authentication implements Serializable {
 
     /**
      * The identifier of an authentication.
@@ -32,5 +32,10 @@ public class Authentication implements Serializable{
      * Reserved property, and it shows where this authentication is registered from.
      */
     private Serializable from;
+
+    /**
+     * Reserved property, and it shows which system this authentication is registered to.
+     */
+    private Serializable system;
 
 }
