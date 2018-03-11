@@ -1,4 +1,4 @@
-package cn.devcenter.model.template.api.exception;
+package cn.devcenter.model.repository.exception;
 
 public class NotSupportedException extends RuntimeException {
 

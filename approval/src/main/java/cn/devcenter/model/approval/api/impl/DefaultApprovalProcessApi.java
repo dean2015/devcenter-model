@@ -1,12 +1,12 @@
 package cn.devcenter.model.approval.api.impl;
 
-import cn.devcenter.model.template.api.exception.NotSupportedException;
 import cn.devcenter.model.approval.ApprovalProcess;
 import cn.devcenter.model.approval.api.ApprovalProcessApi;
 import cn.devcenter.model.approval.dao.ApprovalProcessDAO;
 import cn.devcenter.model.approval.event.AfterCreateApprovalProcessEvent;
 import cn.devcenter.model.approval.event.AfterDeleteApprovalProcessEvent;
 import cn.devcenter.model.eventbus.EventPublisher;
+import cn.devcenter.model.repository.exception.NotSupportedException;
 import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

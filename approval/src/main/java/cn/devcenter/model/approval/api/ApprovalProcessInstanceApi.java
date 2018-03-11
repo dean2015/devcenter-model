@@ -1,8 +1,8 @@
 package cn.devcenter.model.approval.api;
 
-import cn.devcenter.model.template.api.CurdTemplate;
 import cn.devcenter.model.approval.ApprovalProcessInstance;
 import cn.devcenter.model.approval.ApprovalState;
+import cn.devcenter.model.repository.CurdTemplate;
 
 import java.io.Serializable;
 

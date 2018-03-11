@@ -1,9 +1,9 @@
 package cn.devcenter.model.comment.api.impl;
 
-import cn.devcenter.model.template.api.exception.NotSupportedException;
 import cn.devcenter.model.comment.Comment;
 import cn.devcenter.model.comment.api.CommentApi;
 import cn.devcenter.model.comment.dao.CommentDAO;
+import cn.devcenter.model.repository.exception.NotSupportedException;
 import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

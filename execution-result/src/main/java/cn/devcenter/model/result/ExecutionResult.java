@@ -27,6 +27,13 @@ public class ExecutionResult<E> {
         return this;
     }
 
+    public ExecutionResult<E> success(E data) {
+        this.code = SUCCESS;
+        this.message = "";
+        this.data = data;
+        return this;
+    }
+
     public ExecutionResult<E> success(String message) {
         this.code = SUCCESS;
         this.message = message;
@@ -57,5 +64,9 @@ public class ExecutionResult<E> {
     private Integer code;
     private String message;
     private E data;
+
+    public boolean isSuccessful() {
+        return code == SUCCESS;
+    }
 
 }
