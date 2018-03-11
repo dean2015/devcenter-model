@@ -5,20 +5,16 @@ import cn.devcenter.model.authentication.api.AuthenticationApi;
 import cn.devcenter.model.authentication.dao.AuthenticationDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
-import cn.devcenter.model.template.api.exception.NotSupportedException;
-import jdk.nashorn.internal.objects.Global;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.omg.CORBA.portable.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Service
 public class DefaultAuthenticationApi implements AuthenticationApi {

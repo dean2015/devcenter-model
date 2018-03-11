@@ -2,7 +2,6 @@ package cn.devcenter.model.authentication.api;
 
 import cn.devcenter.model.authentication.Authentication;
 import cn.devcenter.model.result.ExecutionResult;
-import cn.devcenter.model.template.api.CurdTemplate;
 
 import java.io.Serializable;
 
