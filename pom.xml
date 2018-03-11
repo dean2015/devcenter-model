@@ -21,6 +21,7 @@
         <module>authority</module>
         <module>organization</module>
         <module>base-model</module>
+        <module>token</module>
     </modules>
 
     <properties>
@@ -36,6 +37,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
 
