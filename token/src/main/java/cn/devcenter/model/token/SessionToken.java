@@ -1,10 +1,8 @@
 package cn.devcenter.model.token;
 
-
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -12,20 +10,18 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class AccessToken implements Serializable {
+public class SessionToken implements Serializable {
 
     private Serializable id;
 
-    private Serializable token;
-
-    private Serializable refreshToken;
+    private Serializable accessToken;
 
     private Serializable from;
 
     private List<Serializable> roles;
 
-    private Long createTime;
+    private Serializable userIdentifier;
 
-    private Long expiredPeriod;
+    private Serializable requestId;
 
 }
