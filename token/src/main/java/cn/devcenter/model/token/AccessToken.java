@@ -22,7 +22,7 @@ public class AccessToken implements Serializable {
 
     private Serializable from;
 
-    private List<Serializable> roles;
+    private Boolean enabled;
 
     private Long createTime;
 

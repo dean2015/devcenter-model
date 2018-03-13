@@ -90,6 +90,16 @@
                 <artifactId>organization</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>token</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>authentication</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

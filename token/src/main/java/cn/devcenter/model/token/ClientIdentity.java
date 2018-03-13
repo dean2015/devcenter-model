@@ -17,4 +17,6 @@ public class ClientIdentity implements Serializable {
 
     private Serializable clientIdentifier;
 
+    private Serializable device;
+
 }
