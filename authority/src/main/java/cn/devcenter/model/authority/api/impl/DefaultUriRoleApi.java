@@ -46,7 +46,7 @@ public class DefaultUriRoleApi implements UriRoleApi {
     }
 
     @Override
-    public <E> ExecutionResult<Page<UriRole>> find(E condition, Pageable pageable) {
+    public <E extends UriRole> ExecutionResult<Page<UriRole>> find(E condition, Pageable pageable) {
         Page<UriRole> pagedUriRole = uriRoleDAO.find(condition, pageable);
         ExecutionResult<Page<UriRole>> result = new ExecutionResult<>();
         return result.success(pagedUriRole);

@@ -17,5 +17,5 @@ public interface RoleApi {
 
     ExecutionResult<Role> findById(Serializable id);
 
-    <E> ExecutionResult<Page<Role>> find(E condition, Pageable pageable);
+    <E extends Role> ExecutionResult<Page<Role>> find(E condition, Pageable pageable);
 }

@@ -46,7 +46,7 @@ public class DefaultRoleApi implements RoleApi {
     }
 
     @Override
-    public <E> ExecutionResult<Page<Role>> find(E condition, Pageable pageable) {
+    public <E extends Role> ExecutionResult<Page<Role>> find(E condition, Pageable pageable) {
         Page<Role> pagedRole = roleDAO.find(condition, pageable);
         ExecutionResult<Page<Role>> result = new ExecutionResult<>();
         return result.success(pagedRole);
