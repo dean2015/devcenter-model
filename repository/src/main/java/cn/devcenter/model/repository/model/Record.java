@@ -2,6 +2,7 @@ package cn.devcenter.model.repository.model;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -9,10 +10,10 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @Data
-public class Record {
+public class Record implements Serializable {
 
-    private Date createTime;
+    private Long createTime;
 
-    private Date lastModifiedTime;
+    private Long lastModifiedTime;
 
 }
