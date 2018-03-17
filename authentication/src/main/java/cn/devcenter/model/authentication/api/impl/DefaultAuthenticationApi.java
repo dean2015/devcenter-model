@@ -6,8 +6,8 @@ import cn.devcenter.model.authentication.api.AuthenticationApi;
 import cn.devcenter.model.authentication.dao.AuthenticationDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
-import lombok.Data;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,7 +33,7 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     private AuthenticationDAO authenticationDAO;
 
     @Override
-    public ExecutionResult<Authentication> authenticate(Serializable id, Serializable secret) {
+    public ExecutionResult<Authentication> authenticate(String id, String secret) {
         Pageable pageable = PageRequest.of(PAGE_INDEX, PAGE_SIZE);
         Page<Authentication> pagedAuthentication = authenticationDAO.find(new FindCondition(id, secret), pageable);
         if (pagedAuthentication.getSize() > 0) {
@@ -43,7 +43,7 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     }
 
     @Override
-    public ExecutionResult<Authentication> authenticate(Serializable id) {
+    public ExecutionResult<Authentication> authenticate(String id) {
         Authentication authentication = authenticationDAO.findById(id);
         if (null != authentication) {
             return ExecutionResult.newInstance(Authentication.class).success(authentication);
@@ -60,13 +60,17 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
 
     @Override
     public ExecutionResult<Void> changeSecret(Authentication authentication) {
-        authenticationDAO.update(authentication);
-        return ExecutionResult.newInstance(Void.class).success("Secret updated");
+        Serializable id = authenticationDAO.update(authentication);
+        if (id == null) {
+            return ExecutionResult.newInstance(Void.class).fail("Secret not updated");
+        } else {
+            return ExecutionResult.newInstance(Void.class).success("Secret updated");
+        }
     }
 
     @Override
-    public ExecutionResult<Serializable> resetSecret(Serializable id) {
-        Serializable secret = RandomStringUtils.random(SECRET_LENGTH, 0, chars.length, true, true, chars);
+    public ExecutionResult<Serializable> resetSecret(String id) {
+        String secret = RandomStringUtils.random(SECRET_LENGTH, 0, chars.length, true, true, chars);
         Authentication authentication = new Authentication();
         authentication.setId(id);
         authentication.setSecret(secret);

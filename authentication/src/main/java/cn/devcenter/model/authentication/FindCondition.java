@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class FindCondition extends Authentication {
 
-    public FindCondition(Serializable id, Serializable secret) {
+    public FindCondition(String id, String secret) {
         setId(id);
         setSecret(secret);
     }

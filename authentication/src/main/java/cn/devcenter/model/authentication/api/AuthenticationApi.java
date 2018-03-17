@@ -16,7 +16,7 @@ public interface AuthenticationApi {
      * @param secret
      * @return
      */
-    ExecutionResult<Authentication> authenticate(Serializable id, Serializable secret);
+    ExecutionResult<Authentication> authenticate(String id, String secret);
 
     /**
      * Authentication with id only, this interface should be authoritied to sepecific system.
@@ -24,7 +24,7 @@ public interface AuthenticationApi {
      * @param id
      * @return
      */
-    ExecutionResult<Authentication> authenticate(Serializable id);
+    ExecutionResult<Authentication> authenticate(String id);
 
     /**
      * Register a new authentication.
@@ -48,7 +48,7 @@ public interface AuthenticationApi {
      * @param id
      * @return
      */
-    ExecutionResult<Serializable> resetSecret(Serializable id);
+    ExecutionResult<Serializable> resetSecret(String id);
 
     /**
      * Find the paged list of authentications
