@@ -81,7 +81,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     }
 
     @Override
-    public <T> Page<ApprovalProcessInstance> find(T condition, Pageable pageable) {
+    public Page<ApprovalProcessInstance> find(ApprovalProcessInstance condition, Pageable pageable) {
         return approvalProcessInstanceDAO.find(condition, pageable);
     }
 
@@ -100,6 +100,16 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
 
     @Override
     public Serializable update(ApprovalProcessInstance object) {
+        throw new NotSupportedException();
+    }
+
+    @Override
+    public Boolean exists(Serializable serializable) {
+        throw new NotSupportedException();
+    }
+
+    @Override
+    public Long count() {
         throw new NotSupportedException();
     }
 

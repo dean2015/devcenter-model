@@ -1,7 +1,9 @@
 package cn.devcenter.model.authority.dao;
 
 import cn.devcenter.model.authority.UriRole;
-import cn.devcenter.model.repository.BaseRepository;
+import cn.devcenter.model.repository.CurdRepository;
 
-public interface UriRoleDAO extends BaseRepository<UriRole> {
+import java.io.Serializable;
+
+public interface UriRoleDAO extends CurdRepository<UriRole, Serializable> {
 }

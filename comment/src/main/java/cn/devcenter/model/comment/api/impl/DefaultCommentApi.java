@@ -14,46 +14,54 @@ import java.io.Serializable;
 @Service
 public class DefaultCommentApi implements CommentApi {
 
-    @Autowired
-    private CommentDAO commentDAO;
+
+    @Override
+    public Serializable retrieve(Comment comment) {
+        return null;
+    }
+
+    @Override
+    public Page<Comment> findByItem(Comment condition, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<Comment> findByRaiser(Comment condition, Pageable pageable) {
+        return null;
+    }
 
     @Override
     public Comment save(Comment object) {
-        return commentDAO.save(object);
+        return null;
     }
 
     @Override
-    public <E> Page<Comment> find(E condition, Pageable pageable) {
-        throw new NotSupportedException();
+    public <CONDITION extends Comment> Page<Comment> find(CONDITION condition, Pageable pageable) {
+        return null;
     }
 
     @Override
-    public Comment findById(Serializable id) {
-        throw new NotSupportedException();
+    public Comment findById(Serializable serializable) {
+        return null;
     }
 
     @Override
-    public Serializable delete(Serializable id) {
-        return commentDAO.delete(id);
+    public Serializable delete(Serializable serializable) {
+        return null;
     }
 
     @Override
     public Serializable update(Comment object) {
-        throw new NotSupportedException();
+        return null;
     }
 
     @Override
-    public Serializable retrieve(Comment comment) {
-        return commentDAO.update(comment);
+    public Boolean exists(Serializable serializable) {
+        return null;
     }
 
     @Override
-    public <E> Page<Comment> findByItem(E condition, Pageable pageable) {
-        return commentDAO.find(condition, pageable);
-    }
-
-    @Override
-    public <E> Page<Comment> findByRaiser(E condition, Pageable pageable) {
-        return commentDAO.find(condition, pageable);
+    public Long count() {
+        return null;
     }
 }

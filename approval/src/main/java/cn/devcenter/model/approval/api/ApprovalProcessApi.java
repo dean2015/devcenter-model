@@ -1,8 +1,10 @@
 package cn.devcenter.model.approval.api;
 
 import cn.devcenter.model.approval.ApprovalProcess;
-import cn.devcenter.model.repository.CurdTemplate;
+import cn.devcenter.model.repository.CurdRepository;
 
-public interface ApprovalProcessApi extends CurdTemplate<ApprovalProcess> {
+import java.io.Serializable;
+
+public interface ApprovalProcessApi extends CurdRepository<ApprovalProcess, Serializable> {
 
 }

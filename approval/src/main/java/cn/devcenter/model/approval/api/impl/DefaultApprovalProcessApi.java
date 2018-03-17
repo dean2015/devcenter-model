@@ -31,7 +31,7 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
     }
 
     @Override
-    public <T> Page<ApprovalProcess> find(T condition, Pageable pageable) {
+    public Page<ApprovalProcess> find(ApprovalProcess condition, Pageable pageable) {
         return approvalProcessService.find(condition, pageable);
     }
 
@@ -50,6 +50,16 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
 
     @Override
     public Serializable update(ApprovalProcess object) {
+        throw new NotSupportedException();
+    }
+
+    @Override
+    public Boolean exists(Serializable serializable) {
+        throw new NotSupportedException();
+    }
+
+    @Override
+    public Long count() {
         throw new NotSupportedException();
     }
 

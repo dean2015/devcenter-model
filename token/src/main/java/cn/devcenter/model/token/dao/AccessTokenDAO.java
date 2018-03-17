@@ -1,7 +1,9 @@
 package cn.devcenter.model.token.dao;
 
-import cn.devcenter.model.repository.BaseRepository;
+import cn.devcenter.model.repository.CurdRepository;
 import cn.devcenter.model.token.AccessToken;
 
-public interface AccessTokenDAO extends BaseRepository<AccessToken> {
+import java.io.Serializable;
+
+public interface AccessTokenDAO extends CurdRepository<AccessToken, Serializable> {
 }

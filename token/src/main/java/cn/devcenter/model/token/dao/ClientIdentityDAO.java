@@ -1,7 +1,9 @@
 package cn.devcenter.model.token.dao;
 
-import cn.devcenter.model.repository.BaseRepository;
+import cn.devcenter.model.repository.CurdRepository;
 import cn.devcenter.model.token.ClientIdentity;
 
-public interface ClientIdentityDAO extends BaseRepository<ClientIdentity> {
+import java.io.Serializable;
+
+public interface ClientIdentityDAO extends CurdRepository<ClientIdentity, Serializable> {
 }

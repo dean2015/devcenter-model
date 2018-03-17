@@ -1,11 +1,10 @@
 package cn.devcenter.model.approval.dao;
 
 import cn.devcenter.model.approval.ApprovalProcess;
-import cn.devcenter.model.repository.BaseRepository;
-import org.springframework.data.domain.Page;
+import cn.devcenter.model.repository.CurdRepository;
 
 import java.io.Serializable;
 
-public interface ApprovalProcessDAO extends BaseRepository<ApprovalProcess> {
+public interface ApprovalProcessDAO extends CurdRepository<ApprovalProcess, Serializable> {
 
 }

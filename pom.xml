@@ -12,7 +12,6 @@
         <module>approval</module>
         <module>comment</module>
         <module>repository</module>
-        <module>api-template</module>
         <module>stereotype</module>
         <module>eventbus</module>
         <module>execution-result</module>
