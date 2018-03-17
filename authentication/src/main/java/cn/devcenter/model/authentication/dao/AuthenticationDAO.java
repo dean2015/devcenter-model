@@ -1,7 +1,9 @@
 package cn.devcenter.model.authentication.dao;
 
 import cn.devcenter.model.authentication.Authentication;
-import cn.devcenter.model.repository.BaseRepository;
+import cn.devcenter.model.repository.CurdRepository;
 
-public interface AuthenticationDAO extends BaseRepository<Authentication> {
+import java.io.Serializable;
+
+public interface AuthenticationDAO extends CurdRepository<Authentication, Serializable> {
 }

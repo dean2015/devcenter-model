@@ -1,13 +1,12 @@
 package cn.devcenter.model.authentication.api.impl;
 
 import cn.devcenter.model.authentication.Authentication;
+import cn.devcenter.model.authentication.FindCondition;
 import cn.devcenter.model.authentication.api.AuthenticationApi;
 import cn.devcenter.model.authentication.dao.AuthenticationDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -80,18 +79,10 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     }
 
     @Override
-    public <E> ExecutionResult<Page<Authentication>> find(E condition, Pageable pageable) {
-        Page<Authentication> pagedAuthentication = authenticationDAO.find(condition, pageable);
+    public ExecutionResult<Page<Authentication>> find(Object condition, Pageable pageable) {
+        Page<Authentication> pagedAuthentication = authenticationDAO.find((Authentication) condition, pageable);
         ExecutionResult<Page<Authentication>> result = new ExecutionResult<>();
         return result.success(pagedAuthentication);
-    }
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    private static class FindCondition {
-        private Serializable id;
-        private Serializable secret;
     }
 
 }

@@ -1,21 +1,19 @@
 package cn.devcenter.model.authentication;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Data
 public class Authentication implements Serializable {
 
     /**
      * The identifier of an authentication.
      */
-    @Id
     private Serializable id;
 
     /**

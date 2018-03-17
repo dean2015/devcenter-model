@@ -55,8 +55,7 @@ public interface AuthenticationApi {
      *
      * @param condition
      * @param pageable
-     * @param <E>
      * @return
      */
-    <E> ExecutionResult<Page<Authentication>> find(E condition, Pageable pageable);
+    ExecutionResult<Page<Authentication>> find(Object condition, Pageable pageable);
 }
