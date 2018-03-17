@@ -1,8 +1,10 @@
 package cn.devcenter.model.authentication;
 
+import cn.devcenter.model.repository.model.Record;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,5 +37,10 @@ public class Authentication implements Serializable {
      * Reserved property, and it shows which system this authentication is registered to.
      */
     private Serializable system;
+
+    /**
+     * Record information.
+     */
+    private Record record;
 
 }
