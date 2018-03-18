@@ -1,9 +1,7 @@
 package cn.devcenter.model.authentication.api;
 
 import cn.devcenter.model.authentication.Authentication;
-import cn.devcenter.model.authentication.FindCondition;
 import cn.devcenter.model.result.ExecutionResult;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
