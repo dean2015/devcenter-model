@@ -1,16 +1,14 @@
 package cn.devcenter.model.authentication.api.impl;
 
 import cn.devcenter.model.authentication.Authentication;
-import cn.devcenter.model.authentication.FindCondition;
 import cn.devcenter.model.authentication.api.AuthenticationApi;
 import cn.devcenter.model.authentication.dao.AuthenticationDAO;
+import cn.devcenter.model.authentication.dao.AuthenticationFindDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
@@ -32,12 +30,14 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     @Autowired
     private AuthenticationDAO authenticationDAO;
 
+    @Autowired
+    private AuthenticationFindDAO authenticationFindDAO;
+
     @Override
     public ExecutionResult<Authentication> authenticate(String id, String secret) {
-        Pageable pageable = PageRequest.of(PAGE_INDEX, PAGE_SIZE);
-        Page<Authentication> pagedAuthentication = authenticationDAO.find(new FindCondition(id, secret), pageable);
-        if (pagedAuthentication.getSize() > 0) {
-            return ExecutionResult.newInstance(Authentication.class).success(pagedAuthentication.getContent().get(0));
+        Authentication authentication = authenticationDAO.findById(id);
+        if (authentication != null && authentication.getSecret().equals(secret)) {
+            return ExecutionResult.newInstance(Authentication.class).success("Authenticated", authentication);
         }
         return ExecutionResult.newInstance(Authentication.class).fail("Failed to get authentication with id[" + id + "] and secret[" + secret + "]");
     }
@@ -46,7 +46,7 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     public ExecutionResult<Authentication> authenticate(String id) {
         Authentication authentication = authenticationDAO.findById(id);
         if (null != authentication) {
-            return ExecutionResult.newInstance(Authentication.class).success(authentication);
+            return ExecutionResult.newInstance(Authentication.class).success("Authenticated", authentication);
         } else {
             return ExecutionResult.newInstance(Authentication.class).fail("Failed to get authentication with id[" + id + "]");
         }
@@ -83,8 +83,8 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     }
 
     @Override
-    public ExecutionResult<Page<Authentication>> find(Object condition, Pageable pageable) {
-        Page<Authentication> pagedAuthentication = authenticationDAO.find((Authentication) condition, pageable);
+    public <T> ExecutionResult<Page<Authentication>> find(T condition, Pageable pageable) {
+        Page<Authentication> pagedAuthentication = authenticationFindDAO.find(condition, pageable);
         ExecutionResult<Page<Authentication>> result = new ExecutionResult<>();
         return result.success(pagedAuthentication);
     }
