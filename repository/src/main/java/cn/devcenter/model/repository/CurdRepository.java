@@ -9,15 +9,13 @@ public interface CurdRepository<T, ID extends Serializable> extends Repository<T
 
     T save(T object);
 
-    <CONDITION extends T> Page<T> find(CONDITION condition, Pageable pageable);
-
     T findById(ID id);
 
-    Serializable delete(ID id);
+    Serializable deleteById(ID id);
 
     Serializable update(T object);
 
-    Boolean exists(ID id);
+    Boolean existsById(ID id);
 
     Long count();
 
