@@ -13,12 +13,12 @@ public interface UriRoleApi {
 
     ExecutionResult<UriRole> register(UriRole uriRole);
 
-    ExecutionResult<Void> unableUriRole(Serializable id);
+    ExecutionResult<Void> unableUriRole(String id);
 
-    ExecutionResult<Void> enableUriRole(Serializable id);
+    ExecutionResult<Void> enableUriRole(String id);
 
-    ExecutionResult<UriRole> findById(Serializable id);
+    ExecutionResult<UriRole> findById(String id);
 
-    <E extends UriRole> ExecutionResult<Page<UriRole>> find(E condition, Pageable pageable);
+    ExecutionResult<Page<UriRole>> findAll(Pageable pageable);
 
 }

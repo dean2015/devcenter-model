@@ -12,15 +12,15 @@ import java.util.Set;
 @EqualsAndHashCode
 public class UriRole implements Serializable {
 
-    private Serializable id;
+    private String id;
 
-    private Serializable uri;
+    private String uri;
 
-    private Set<Serializable> allowedRoles;
+    private Set<String> allowedRoles;
 
-    private Set<Serializable> forbiddenRoles;
+    private Set<String> forbiddenRoles;
 
-    private Serializable description;
+    private String description;
 
     private Boolean enabled;
 

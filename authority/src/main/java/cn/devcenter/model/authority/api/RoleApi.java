@@ -11,11 +11,11 @@ public interface RoleApi {
 
     ExecutionResult<Role> register(Role role);
 
-    ExecutionResult<Void> unableRole(Serializable id);
+    ExecutionResult<Void> unableRole(String id);
 
-    ExecutionResult<Void> enableRole(Serializable id);
+    ExecutionResult<Void> enableRole(String id);
 
-    ExecutionResult<Role> findById(Serializable id);
+    ExecutionResult<Role> findById(String id);
 
-    <E extends Role> ExecutionResult<Page<Role>> find(E condition, Pageable pageable);
+    ExecutionResult<Page<Role>> findAll(Pageable pageable);
 }

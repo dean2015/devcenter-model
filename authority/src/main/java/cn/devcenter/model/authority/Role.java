@@ -11,12 +11,12 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class Role implements Serializable {
 
-    private Serializable id;
+    private String id;
 
-    private Serializable name;
+    private String name;
 
     private Boolean enabled;
 
-    private Serializable description;
+    private String description;
 
 }
