@@ -11,6 +11,8 @@ public interface CurdRepository<T, ID extends Serializable> extends Repository<T
 
     T findById(ID id);
 
+    Page<T> findAll(Pageable pageable);
+
     Serializable deleteById(ID id);
 
     Serializable update(T object);
