@@ -1,6 +1,7 @@
 package cn.devcenter.model.token;
 
 
+import cn.devcenter.model.repository.model.Record;
 import lombok.*;
 
 import java.io.Serializable;
@@ -14,18 +15,22 @@ import java.util.List;
 @EqualsAndHashCode
 public class AccessToken implements Serializable {
 
-    private Serializable id;
+    private String id;
 
-    private Serializable token;
+    private String token;
 
-    private Serializable refreshToken;
+    private String refreshToken;
 
-    private Serializable from;
+    private String from;
 
     private Boolean enabled;
 
-    private Long createTime;
-
     private Long expiredPeriod;
+
+    private ClientIdentity clientIdentity;
+
+    private UserIdentity userIdentity;
+
+    private Record record;
 
 }

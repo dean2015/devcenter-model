@@ -12,14 +12,14 @@ import java.util.List;
 @EqualsAndHashCode
 public class UserIdentity implements Serializable {
 
-    private Serializable id;
+    private String id;
 
-    private Serializable accessToken;
+    private String accessToken;
 
-    private Serializable userIdentifier;
+    private String userIdentifier;
 
-    private Serializable userId;
+    private String userId;
 
-    private List<Serializable> roles;
+    private List<String> roles;
 
 }

@@ -12,11 +12,11 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class RefreshToken implements Serializable {
 
-    private Serializable id;
+    private String id;
 
-    private Serializable token;
+    private String refreshToken;
 
-    private Serializable accessToken;
+    private String accessToken;
 
     private Long createTime;
 
