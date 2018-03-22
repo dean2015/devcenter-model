@@ -18,7 +18,7 @@ public class UserIdentity implements Serializable {
 
     private String userIdentifier;
 
-    private String userId;
+    private String authenticationId;
 
     private List<String> roles;
 

@@ -81,19 +81,19 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     }
 
     @Override
-    public Page<ApprovalProcessInstance> find(ApprovalProcessInstance condition, Pageable pageable) {
-        return approvalProcessInstanceDAO.find(condition, pageable);
-    }
-
-    @Override
     public ApprovalProcessInstance findById(Serializable approvalProcessInstanceId) {
         return approvalProcessInstanceDAO.findById(approvalProcessInstanceId);
     }
 
     @Override
-    public Serializable delete(Serializable approvalProcessInstanceId) {
+    public Page<ApprovalProcessInstance> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Serializable deleteById(Serializable approvalProcessInstanceId) {
         ApprovalProcessInstance approvalProcessInstance = findById(approvalProcessInstanceId);
-        approvalProcessInstanceDAO.delete(approvalProcessInstanceId);
+        approvalProcessInstanceDAO.deleteById(approvalProcessInstanceId);
         eventPublisher.publish(new AfterDeleteApprovalProcessInstanceEvent(approvalProcessInstance));
         return approvalProcessInstance.getId();
     }
@@ -104,7 +104,7 @@ public class DefaultApprovalProcessInstanceApi implements ApprovalProcessInstanc
     }
 
     @Override
-    public Boolean exists(Serializable serializable) {
+    public Boolean existsById(Serializable serializable) {
         throw new NotSupportedException();
     }
 

@@ -30,10 +30,6 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
         return ap;
     }
 
-    @Override
-    public Page<ApprovalProcess> find(ApprovalProcess condition, Pageable pageable) {
-        return approvalProcessService.find(condition, pageable);
-    }
 
     @Override
     public ApprovalProcess findById(Serializable approvalProcessId) {
@@ -41,9 +37,14 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
     }
 
     @Override
-    public Serializable delete(Serializable approvalProcessId) {
+    public Page<ApprovalProcess> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Serializable deleteById(Serializable approvalProcessId) {
         ApprovalProcess approvalProcess = findById(approvalProcessId);
-        approvalProcessService.delete(approvalProcessId);
+        approvalProcessService.deleteById(approvalProcessId);
         eventPublisher.publish(new AfterDeleteApprovalProcessEvent(approvalProcess));
         return approvalProcess.getId();
     }
@@ -54,7 +55,7 @@ public class DefaultApprovalProcessApi implements ApprovalProcessApi {
     }
 
     @Override
-    public Boolean exists(Serializable serializable) {
+    public Boolean existsById(Serializable serializable) {
         throw new NotSupportedException();
     }
 

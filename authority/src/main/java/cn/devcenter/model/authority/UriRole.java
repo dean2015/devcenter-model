@@ -1,5 +1,6 @@
 package cn.devcenter.model.authority;
 
+import cn.devcenter.model.repository.model.Record;
 import lombok.*;
 
 import java.io.Serializable;
@@ -23,5 +24,7 @@ public class UriRole implements Serializable {
     private String description;
 
     private Boolean enabled;
+
+    private Record record;
 
 }

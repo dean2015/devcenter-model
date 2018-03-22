@@ -19,7 +19,7 @@ public class AccessToken implements Serializable {
 
     private String token;
 
-    private String refreshToken;
+    private RefreshToken refreshToken;
 
     private String from;
 

@@ -105,6 +105,11 @@
                 <artifactId>authentication</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>authority</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

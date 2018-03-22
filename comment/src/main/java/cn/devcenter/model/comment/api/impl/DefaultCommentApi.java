@@ -35,10 +35,6 @@ public class DefaultCommentApi implements CommentApi {
         return null;
     }
 
-    @Override
-    public <CONDITION extends Comment> Page<Comment> find(CONDITION condition, Pageable pageable) {
-        return null;
-    }
 
     @Override
     public Comment findById(Serializable serializable) {
@@ -46,7 +42,12 @@ public class DefaultCommentApi implements CommentApi {
     }
 
     @Override
-    public Serializable delete(Serializable serializable) {
+    public Page<Comment> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Serializable deleteById(Serializable serializable) {
         return null;
     }
 
@@ -56,7 +57,7 @@ public class DefaultCommentApi implements CommentApi {
     }
 
     @Override
-    public Boolean exists(Serializable serializable) {
+    public Boolean existsById(Serializable serializable) {
         return null;
     }
 
