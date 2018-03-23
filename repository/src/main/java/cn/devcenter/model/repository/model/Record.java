@@ -3,7 +3,6 @@ package cn.devcenter.model.repository.model;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,8 +11,8 @@ import java.util.Date;
 @Data
 public class Record implements Serializable {
 
-    private Long createTime;
+    private long createTime;
 
-    private Long lastModifiedTime;
+    private long lastModifiedTime;
 
 }

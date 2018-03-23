@@ -12,10 +12,6 @@ import java.util.List;
 @EqualsAndHashCode
 public class UserIdentity implements Serializable {
 
-    private String id;
-
-    private String accessToken;
-
     private String userIdentifier;
 
     private String authenticationId;

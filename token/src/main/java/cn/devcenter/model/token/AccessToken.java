@@ -23,9 +23,9 @@ public class AccessToken implements Serializable {
 
     private String from;
 
-    private Boolean enabled;
+    private boolean enabled;
 
-    private Long expiredPeriod;
+    private long expiredPeriod;
 
     private ClientIdentity clientIdentity;
 
@@ -33,4 +33,7 @@ public class AccessToken implements Serializable {
 
     private Record record;
 
+    public boolean isExpired() {
+        return System.currentTimeMillis() > record.getCreateTime() + expiredPeriod;
+    }
 }

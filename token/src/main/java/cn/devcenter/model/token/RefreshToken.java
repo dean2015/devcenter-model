@@ -12,15 +12,15 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class RefreshToken implements Serializable {
 
-    private String id;
-
     private String refreshToken;
 
-    private String accessToken;
+    private long createTime;
 
-    private Long createTime;
+    private long LastUsedAt;
 
-    private Long LastUsedAt;
+    private long expiredPeriod;
 
-    private Long expiredPeriod;
+    public boolean isExpired(){
+        return System.currentTimeMillis() > createTime + expiredPeriod;
+    }
 }

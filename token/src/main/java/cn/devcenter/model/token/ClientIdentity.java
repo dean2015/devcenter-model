@@ -11,10 +11,6 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class ClientIdentity implements Serializable {
 
-    private String id;
-
-    private String accessToken;
-
     private String clientIdentifier;
 
     private String device;
