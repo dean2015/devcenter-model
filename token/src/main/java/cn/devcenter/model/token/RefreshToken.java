@@ -3,6 +3,7 @@ package cn.devcenter.model.token;
 
 import lombok.*;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
 @Data
@@ -20,6 +21,7 @@ public class RefreshToken implements Serializable {
 
     private long expiredPeriod;
 
+    @Transient
     public boolean isExpired(){
         return System.currentTimeMillis() > createTime + expiredPeriod;
     }

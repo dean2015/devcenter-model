@@ -4,6 +4,7 @@ package cn.devcenter.model.token;
 import cn.devcenter.model.repository.model.Record;
 import lombok.*;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,7 @@ public class AccessToken implements Serializable {
 
     private Record record;
 
+    @Transient
     public boolean isExpired() {
         return System.currentTimeMillis() > record.getCreateTime() + expiredPeriod;
     }
