@@ -21,7 +21,6 @@ public class Role implements Serializable {
 
     private String description;
 
-    @ApiModelProperty(hidden = true)
     private Record record;
 
 }

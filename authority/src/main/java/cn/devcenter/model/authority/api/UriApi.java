@@ -9,6 +9,10 @@ public interface UriApi {
 
     ExecutionResult<Uri> create(Uri uri);
 
+    ExecutionResult<String> delete(String id);
+
+    ExecutionResult<String> update(Uri role);
+
     ExecutionResult<Uri> findById(String id);
 
     ExecutionResult<Page<Uri>> findAll(Pageable pageable);

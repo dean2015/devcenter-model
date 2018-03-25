@@ -28,6 +28,24 @@ public class DefaultRoleApi implements RoleApi {
     }
 
     @Override
+    public ExecutionResult<String> delete(String id) {
+        Serializable deletedId = roleDAO.deleteById(id);
+        if (null == deletedId) {
+            return ExecutionResult.newInstance(String.class).fail("Delete role failed");
+        }
+        return ExecutionResult.newInstance(String.class).success("", id);
+    }
+
+    @Override
+    public ExecutionResult<String> update(Role role) {
+        Serializable updatedId = roleDAO.update(role);
+        if (null == updatedId) {
+            return ExecutionResult.newInstance(String.class).fail("Update role failed");
+        }
+        return ExecutionResult.newInstance(String.class).success("", role.getId());
+    }
+
+    @Override
     public ExecutionResult<Void> unableRole(String id) {
         Role role = new Role();
         role.setId(id);

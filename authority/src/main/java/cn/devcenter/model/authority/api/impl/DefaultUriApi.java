@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.io.Serializable;
+
 @Service
 public class DefaultUriApi implements UriApi {
 
@@ -26,6 +28,24 @@ public class DefaultUriApi implements UriApi {
     public ExecutionResult<Uri> create(Uri uri) {
         Uri savedUri = uriDAO.save(uri);
         return ExecutionResult.newInstance(Uri.class).success(savedUri);
+    }
+
+    @Override
+    public ExecutionResult<String> delete(String id) {
+        Serializable deletedId = uriDAO.deleteById(id);
+        if (null == deletedId) {
+            return ExecutionResult.newInstance(String.class).fail("Delete uri failed");
+        }
+        return ExecutionResult.newInstance(String.class).success("", id);
+    }
+
+    @Override
+    public ExecutionResult<String> update(Uri uri) {
+        Serializable updatedId = uriDAO.update(uri);
+        if (null == updatedId) {
+            return ExecutionResult.newInstance(String.class).fail("Update uri failed");
+        }
+        return ExecutionResult.newInstance(String.class).success("", uri.getId());
     }
 
     @Override

@@ -11,6 +11,10 @@ public interface RoleApi {
 
     ExecutionResult<Role> create(Role role);
 
+    ExecutionResult<String> delete(String id);
+
+    ExecutionResult<String> update(Role role);
+
     ExecutionResult<Void> unableRole(String id);
 
     ExecutionResult<Void> enableRole(String id);
