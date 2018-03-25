@@ -36,7 +36,7 @@ public class DefaultUriApi implements UriApi {
         if (null == deletedId) {
             return ExecutionResult.newInstance(String.class).fail("Delete uri failed");
         }
-        return ExecutionResult.newInstance(String.class).success("", id);
+        return ExecutionResult.newInstance(String.class).success("URI [" + id + "] deleted", id);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class DefaultUriApi implements UriApi {
         if (null == updatedId) {
             return ExecutionResult.newInstance(String.class).fail("Update uri failed");
         }
-        return ExecutionResult.newInstance(String.class).success("", uri.getId());
+        return ExecutionResult.newInstance(String.class).success("URI [" + uri.getId() + "] updated", uri.getId());
     }
 
     @Override

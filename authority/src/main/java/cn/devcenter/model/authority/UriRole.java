@@ -2,6 +2,7 @@ package cn.devcenter.model.authority;
 
 import cn.devcenter.model.repository.model.Record;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.Set;
 @EqualsAndHashCode
 public class UriRole implements Serializable {
 
+    @Id
     private String id;
 
     private String uriId;

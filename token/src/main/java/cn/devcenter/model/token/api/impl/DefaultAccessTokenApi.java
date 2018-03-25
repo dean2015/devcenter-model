@@ -101,4 +101,10 @@ public class DefaultAccessTokenApi implements AccessTokenApi {
         }
         return ExecutionResult.newInstance(AccessToken.class).success("AccessToken refreshed", updateResult.getData());
     }
+
+    @Override
+    public ExecutionResult<Void> clear() {
+        accessTokenDAO.clear();
+        return ExecutionResult.newInstance(Void.class).success("Cleared");
+    }
 }

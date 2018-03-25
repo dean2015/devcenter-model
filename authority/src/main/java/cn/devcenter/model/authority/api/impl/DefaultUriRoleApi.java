@@ -1,21 +1,38 @@
 package cn.devcenter.model.authority.api.impl;
 
+import cn.devcenter.model.authority.Role;
+import cn.devcenter.model.authority.Uri;
 import cn.devcenter.model.authority.UriRole;
 import cn.devcenter.model.authority.api.UriRoleApi;
+import cn.devcenter.model.authority.dao.RoleDAO;
+import cn.devcenter.model.authority.dao.UriDAO;
 import cn.devcenter.model.authority.dao.UriRoleDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DefaultUriRoleApi implements UriRoleApi {
 
+    private final UriRoleDAO uriRoleDAO;
+
+    private final RoleDAO roleDAO;
+
+    private final UriDAO uriDAO;
+
     @Autowired
-    private UriRoleDAO uriRoleDAO;
+    public DefaultUriRoleApi(UriRoleDAO uriRoleDAO, RoleDAO roleDAO, UriDAO uriDAO) {
+        this.uriRoleDAO = uriRoleDAO;
+        this.roleDAO = roleDAO;
+        this.uriDAO = uriDAO;
+    }
 
     @Override
     public ExecutionResult<UriRole> bind(UriRole uriRole) {
@@ -61,6 +78,36 @@ public class DefaultUriRoleApi implements UriRoleApi {
         Page<UriRole> pagedUriRole = uriRoleDAO.findAll(pageable);
         ExecutionResult<Page<UriRole>> result = new ExecutionResult<>();
         return result.success("Find uri roles", pagedUriRole);
+    }
+
+    @Override
+    public ExecutionResult<Page<Role>> findRolesByUri(String uriId, Pageable pageable) {
+        Page<UriRole> pagedUriRole = uriRoleDAO.findByUri(uriId, pageable);
+        final List<Role> collection = new ArrayList<>();
+        pagedUriRole.getContent().forEach(uriRole -> {
+            Role role = roleDAO.findById(uriRole.getRoleId());
+            if (null != role) {
+                collection.add(role);
+            }
+        });
+        Page<Role> pagedRole = new PageImpl<>(collection, pageable, pagedUriRole.getTotalElements());
+        ExecutionResult<Page<Role>> result = new ExecutionResult<>();
+        return result.success("Find roles", pagedRole);
+    }
+
+    @Override
+    public ExecutionResult<Page<Uri>> findUrisByRole(String roleId, Pageable pageable) {
+        Page<UriRole> pagedUriRole = uriRoleDAO.findByRole(roleId, pageable);
+        final List<Uri> collection = new ArrayList<>();
+        pagedUriRole.getContent().forEach(uriRole -> {
+            Uri uri = uriDAO.findById(uriRole.getUriId());
+            if (null != uri) {
+                collection.add(uri);
+            }
+        });
+        Page<Uri> pagedUri = new PageImpl<>(collection, pageable, pagedUriRole.getTotalElements());
+        ExecutionResult<Page<Uri>> result = new ExecutionResult<>();
+        return result.success("Find uris", pagedUri);
     }
 
 }

@@ -9,4 +9,6 @@ public interface AccessTokenDAO extends CurdRepository<AccessToken, Serializable
 
     AccessToken findByToken(String token);
 
+    void clear();
+
 }

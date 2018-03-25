@@ -16,4 +16,5 @@ public interface AccessTokenApi {
 
     ExecutionResult<AccessToken> refresh(String accessToken, String freshToken);
 
+    ExecutionResult<Void> clear();
 }

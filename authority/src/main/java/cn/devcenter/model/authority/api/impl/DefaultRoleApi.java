@@ -33,7 +33,7 @@ public class DefaultRoleApi implements RoleApi {
         if (null == deletedId) {
             return ExecutionResult.newInstance(String.class).fail("Delete role failed");
         }
-        return ExecutionResult.newInstance(String.class).success("", id);
+        return ExecutionResult.newInstance(String.class).success("Role [" + id + "] deleted", id);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DefaultRoleApi implements RoleApi {
         if (null == updatedId) {
             return ExecutionResult.newInstance(String.class).fail("Update role failed");
         }
-        return ExecutionResult.newInstance(String.class).success("", role.getId());
+        return ExecutionResult.newInstance(String.class).success("Role [" + role.getId() + "] updated", role.getId());
     }
 
     @Override

@@ -12,7 +12,7 @@ public class AuthenticationRole {
 
     private String id;
 
-    private String uriId;
+    private String authenticationId;
 
     private String roleId;
 

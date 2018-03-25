@@ -1,24 +1,33 @@
 package cn.devcenter.model.authority.api.impl;
 
 import cn.devcenter.model.authority.AuthenticationRole;
+import cn.devcenter.model.authority.Role;
+import cn.devcenter.model.authority.UriRole;
 import cn.devcenter.model.authority.api.AuthenticationRoleApi;
 import cn.devcenter.model.authority.dao.AuthenticationRoleDAO;
+import cn.devcenter.model.authority.dao.RoleDAO;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DefaultAuthenticationRoleApi implements AuthenticationRoleApi {
 
     private final AuthenticationRoleDAO authenticationRoleDAO;
 
+    private final RoleDAO roleDAO;
+
     @Autowired
-    public DefaultAuthenticationRoleApi(AuthenticationRoleDAO authenticationRoleDAO) {
+    public DefaultAuthenticationRoleApi(AuthenticationRoleDAO authenticationRoleDAO, RoleDAO roleDAO) {
         this.authenticationRoleDAO = authenticationRoleDAO;
+        this.roleDAO = roleDAO;
     }
 
     @Override
@@ -47,6 +56,21 @@ public class DefaultAuthenticationRoleApi implements AuthenticationRoleApi {
         Page<AuthenticationRole> pagedAuthenticationRole = authenticationRoleDAO.findAll(pageable);
         ExecutionResult<Page<AuthenticationRole>> result = new ExecutionResult<>();
         return result.success("Find AuthenticationRoles", pagedAuthenticationRole);
+    }
+
+    @Override
+    public ExecutionResult<Page<Role>> findRoleByAuthenticationId(String authenticationId, Pageable pageable) {
+        Page<AuthenticationRole> pagedAuthenticationRole = authenticationRoleDAO.findByAuthenticationId(authenticationId, pageable);
+        final List<Role> collection = new ArrayList<>();
+        pagedAuthenticationRole.getContent().forEach(authenticationRole -> {
+            Role role = roleDAO.findById(authenticationRole.getRoleId());
+            if (null != role) {
+                collection.add(role);
+            }
+        });
+        Page<Role> pagedRoles = new PageImpl<>(collection, pageable, pagedAuthenticationRole.getTotalElements());
+        ExecutionResult<Page<Role>> result = new ExecutionResult<>();
+        return result.success("Find roles", pagedRoles);
     }
 
 }
