@@ -7,11 +7,10 @@ import cn.devcenter.model.authority.api.UriRoleApi;
 import cn.devcenter.model.authority.dao.RoleDAO;
 import cn.devcenter.model.authority.dao.UriDAO;
 import cn.devcenter.model.authority.dao.UriRoleDAO;
+import cn.devcenter.model.repository.Page;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
@@ -90,7 +89,7 @@ public class DefaultUriRoleApi implements UriRoleApi {
                 collection.add(role);
             }
         });
-        Page<Role> pagedRole = new PageImpl<>(collection, pageable, pagedUriRole.getTotalElements());
+        Page<Role> pagedRole = new Page<>(collection, pagedUriRole.getTotal(), pagedUriRole.getPage(), pagedUriRole.getSize());
         ExecutionResult<Page<Role>> result = new ExecutionResult<>();
         return result.success("Find roles", pagedRole);
     }
@@ -105,7 +104,7 @@ public class DefaultUriRoleApi implements UriRoleApi {
                 collection.add(uri);
             }
         });
-        Page<Uri> pagedUri = new PageImpl<>(collection, pageable, pagedUriRole.getTotalElements());
+        Page<Uri> pagedUri = new Page<>(collection, pagedUriRole.getTotal(), pagedUriRole.getPage(), pagedUriRole.getSize());
         ExecutionResult<Page<Uri>> result = new ExecutionResult<>();
         return result.success("Find uris", pagedUri);
     }

@@ -9,8 +9,6 @@
     <packaging>pom</packaging>
     <version>0.0.1</version>
     <modules>
-        <module>approval</module>
-        <module>comment</module>
         <module>repository</module>
         <module>stereotype</module>
         <module>eventbus</module>

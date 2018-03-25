@@ -4,11 +4,11 @@ import cn.devcenter.model.authentication.Authentication;
 import cn.devcenter.model.authentication.api.AuthenticationApi;
 import cn.devcenter.model.authentication.dao.AuthenticationDAO;
 import cn.devcenter.model.authentication.dao.AuthenticationFindDAO;
+import cn.devcenter.model.repository.Page;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;

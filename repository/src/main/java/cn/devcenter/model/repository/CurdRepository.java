@@ -1,6 +1,5 @@
 package cn.devcenter.model.repository;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;

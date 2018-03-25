@@ -2,14 +2,13 @@ package cn.devcenter.model.authority.api.impl;
 
 import cn.devcenter.model.authority.AuthenticationRole;
 import cn.devcenter.model.authority.Role;
-import cn.devcenter.model.authority.UriRole;
 import cn.devcenter.model.authority.api.AuthenticationRoleApi;
 import cn.devcenter.model.authority.dao.AuthenticationRoleDAO;
 import cn.devcenter.model.authority.dao.RoleDAO;
+import cn.devcenter.model.repository.Page;
 import cn.devcenter.model.result.ExecutionResult;
 import cn.devcenter.model.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
@@ -68,7 +67,7 @@ public class DefaultAuthenticationRoleApi implements AuthenticationRoleApi {
                 collection.add(role);
             }
         });
-        Page<Role> pagedRoles = new PageImpl<>(collection, pageable, pagedAuthenticationRole.getTotalElements());
+        Page<Role> pagedRoles = new Page<>(collection, pagedAuthenticationRole.getTotal(), pagedAuthenticationRole.getPage(), pagedAuthenticationRole.getSize());
         ExecutionResult<Page<Role>> result = new ExecutionResult<>();
         return result.success("Find roles", pagedRoles);
     }
