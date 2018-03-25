@@ -11,15 +11,15 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class UriRole implements Serializable {
+public class Uri implements Serializable {
 
     private String id;
 
-    private String uriId;
+    private String uri;
 
-    private String roleId;
+    private String description;
 
-    private Boolean enabled;
+    private Boolean serviceId;
 
     private Record record;
 

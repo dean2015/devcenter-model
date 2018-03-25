@@ -1,6 +1,5 @@
 package cn.devcenter.model.authority.api.impl;
 
-import cn.devcenter.model.authority.Role;
 import cn.devcenter.model.authority.UriRole;
 import cn.devcenter.model.authority.api.UriRoleApi;
 import cn.devcenter.model.authority.dao.UriRoleDAO;
@@ -19,9 +18,18 @@ public class DefaultUriRoleApi implements UriRoleApi {
     private UriRoleDAO uriRoleDAO;
 
     @Override
-    public ExecutionResult<UriRole> register(UriRole uriRole) {
+    public ExecutionResult<UriRole> bind(UriRole uriRole) {
         UriRole savedUriRole = uriRoleDAO.save(uriRole);
         return ExecutionResult.newInstance(UriRole.class).success(savedUriRole);
+    }
+
+    @Override
+    public ExecutionResult<String> unbind(String id) {
+        Serializable deletedId = uriRoleDAO.deleteById(id);
+        if (null == deletedId) {
+            return ExecutionResult.newInstance(String.class).fail("Unbind UriRole failed");
+        }
+        return ExecutionResult.newInstance(String.class).success("Unbind UriRole", id);
     }
 
     @Override

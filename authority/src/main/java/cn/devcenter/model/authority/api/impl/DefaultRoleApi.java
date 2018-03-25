@@ -14,11 +14,15 @@ import java.io.Serializable;
 @Service
 public class DefaultRoleApi implements RoleApi {
 
+    private final RoleDAO roleDAO;
+
     @Autowired
-    private RoleDAO roleDAO;
+    public DefaultRoleApi(RoleDAO roleDAO) {
+        this.roleDAO = roleDAO;
+    }
 
     @Override
-    public ExecutionResult<Role> register(Role role) {
+    public ExecutionResult<Role> create(Role role) {
         Role savedRole = roleDAO.save(role);
         return ExecutionResult.newInstance(Role.class).success(savedRole);
     }

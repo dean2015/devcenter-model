@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public interface RoleApi {
 
-    ExecutionResult<Role> register(Role role);
+    ExecutionResult<Role> create(Role role);
 
     ExecutionResult<Void> unableRole(String id);
 

@@ -11,7 +11,9 @@ import java.io.Serializable;
 
 public interface UriRoleApi {
 
-    ExecutionResult<UriRole> register(UriRole uriRole);
+    ExecutionResult<UriRole> bind(UriRole uriRole);
+
+    ExecutionResult<String> unbind(String id);
 
     ExecutionResult<Void> unableUriRole(String id);
 
