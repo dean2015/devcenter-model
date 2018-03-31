@@ -7,7 +7,7 @@
     <groupId>cn.devcenter.model</groupId>
     <artifactId>devcenter-model</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <modules>
         <module>repository</module>
         <module>stereotype</module>
@@ -49,7 +49,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Spring boot -->
             <dependency>
                 <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
