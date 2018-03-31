@@ -2,6 +2,11 @@ package cn.devcenter.model.result;
 
 import lombok.Data;
 
+/**
+ * 内部调用传递结果使用
+ *
+ * @param <E>
+ */
 @Data
 public class ExecutionResult<E> {
 

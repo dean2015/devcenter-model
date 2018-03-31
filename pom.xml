@@ -19,6 +19,7 @@
         <module>organization</module>
         <module>base-model</module>
         <module>token</module>
+        <module>session-token</module>
     </modules>
 
     <properties>
@@ -54,11 +55,6 @@
             <dependency>
                 <groupId>cn.devcenter.model</groupId>
                 <artifactId>repository</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.devcenter.model</groupId>
-                <artifactId>api-template</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -101,6 +97,11 @@
                 <artifactId>authority</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>session-token</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -133,7 +134,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
