@@ -1,7 +1,6 @@
 package cn.devcenter.model.authority;
 
 import cn.devcenter.model.repository.model.Record;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import java.io.Serializable;

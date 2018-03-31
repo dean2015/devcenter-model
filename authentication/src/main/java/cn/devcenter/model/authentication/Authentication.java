@@ -1,18 +1,15 @@
 package cn.devcenter.model.authentication;
 
 import cn.devcenter.model.repository.model.Record;
-import io.swagger.annotations.ApiModel;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
 @Data
-@ApiModel
 public class Authentication implements Serializable {
 
     /**

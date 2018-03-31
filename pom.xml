@@ -39,12 +39,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.5.18</version>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -109,6 +103,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>dlfc-release</id>
+            <name>dlfc release Respoitories</name>
+            <url>http://10.32.156.187:9091/nexus/content/repositories/dlfc-release/</url>
+        </repository>
+        <snapshotRepository>
+            <id>dlfc-snapshots</id>
+            <name>dlfc snapshots repo</name>
+            <url>http://10.32.156.187:9091/nexus/content/repositories/dlfc-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <build>
         <finalName>${project.artifactId}</finalName>
