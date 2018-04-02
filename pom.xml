@@ -8,6 +8,12 @@
     <artifactId>devcenter-model</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
+    <developers>
+        <developer>
+            <name>Gao Song</name>
+            <email>zhgmu@sina.com</email>
+        </developer>
+    </developers>
     <modules>
         <module>repository</module>
         <module>stereotype</module>
@@ -20,11 +26,12 @@
         <module>base-model</module>
         <module>token</module>
         <module>session-token</module>
+        <module>exception</module>
     </modules>
 
     <properties>
         <jdk.version>1.8</jdk.version>
-        <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
+        <dependencies.version>1.0.0</dependencies.version>
     </properties>
 
     <dependencies>
@@ -45,10 +52,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <!-- Import dependency management from Spring Boot -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
+                <groupId>cn.devcenter.framework</groupId>
+                <artifactId>dependencies</artifactId>
+                <version>${dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -100,6 +106,11 @@
             <dependency>
                 <groupId>cn.devcenter.model</groupId>
                 <artifactId>session-token</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.devcenter.model</groupId>
+                <artifactId>exception</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

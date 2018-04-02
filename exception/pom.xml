@@ -15,12 +15,7 @@
         </developer>
     </developers>
 
-    <artifactId>execution-result</artifactId>
+    <artifactId>exception</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-    </dependencies>
+
 </project>
