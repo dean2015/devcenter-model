@@ -1,7 +1,7 @@
 package cn.devcenter.model.exception;
 
 /**
- * 应用内部必须要处理的异常. 此类异常可以转化为runtime异常,让上一层来决定是否处理
+ * 标识业务类异常，应用内部必须要处理的异常.
  *
  * @author gaosong
  */
