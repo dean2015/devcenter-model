@@ -1,14 +1,16 @@
 package cn.devcenter.model.cache;
 
+import cn.devcenter.model.exception.ApplicationException;
+
 /**
  * Cache异常
- * @author gaosong
  *
+ * @author gaosong
  */
-public class CacheException extends RuntimeException {
+public class CacheException extends ApplicationException {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 6516044320967055058L;
 
@@ -22,8 +24,7 @@ public class CacheException extends RuntimeException {
     /**
      * Creates a new <code>CacheException</code>.
      *
-     * @param message
-     *            the reason for the exception.
+     * @param message the reason for the exception.
      */
     public CacheException(String message) {
         super(message);
@@ -32,8 +33,7 @@ public class CacheException extends RuntimeException {
     /**
      * Creates a new <code>CacheException</code>.
      *
-     * @param cause
-     *            the underlying cause of the exception.
+     * @param cause the underlying cause of the exception.
      */
     public CacheException(Throwable cause) {
         super(cause);
@@ -42,10 +42,8 @@ public class CacheException extends RuntimeException {
     /**
      * Creates a new <code>CacheException</code>.
      *
-     * @param message
-     *            the reason for the exception.
-     * @param cause
-     *            the underlying cause of the exception.
+     * @param message the reason for the exception.
+     * @param cause   the underlying cause of the exception.
      */
     public CacheException(String message, Throwable cause) {
         super(message, cause);

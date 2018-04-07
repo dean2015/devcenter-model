@@ -8,4 +8,7 @@ package cn.devcenter.model.cache;
 public interface CacheManager {
 
     <K, V> Cache<K, V> getCache(String name) throws CacheException;
+
+    <K, V> Cache<K, V> getCache() throws CacheException;
+
 }

@@ -17,5 +17,10 @@
 
     <artifactId>cache</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>cn.devcenter.model</groupId>
+            <artifactId>exception</artifactId>
+        </dependency>
+    </dependencies>
 </project>
