@@ -23,7 +23,6 @@
         <module>authentication</module>
         <module>authority</module>
         <module>organization</module>
-        <module>base-model</module>
         <module>token</module>
         <module>session-token</module>
         <module>exception</module>
