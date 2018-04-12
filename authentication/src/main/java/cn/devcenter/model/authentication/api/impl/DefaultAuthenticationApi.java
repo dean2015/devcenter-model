@@ -16,12 +16,12 @@ public class DefaultAuthenticationApi implements AuthenticationApi {
     }
 
     @Override
-    public ExecutionResult<Boolean> authenticate(String id, String secret) {
+    public ExecutionResult<Authentication> authenticate(String id, String secret) {
         Authentication authentication = authenticationDAO.findById(id);
         if (null != authentication && authentication.getId().equals(id) && authentication.getSecret().equals(secret)) {
-            return ExecutionResult.newInstance(Boolean.class).success("", true);
+            return ExecutionResult.newInstance(Authentication.class).success("", authentication);
         }
-        return ExecutionResult.newInstance(Boolean.class).fail("", false);
+        return ExecutionResult.newInstance(Authentication.class).fail("");
     }
 
 }

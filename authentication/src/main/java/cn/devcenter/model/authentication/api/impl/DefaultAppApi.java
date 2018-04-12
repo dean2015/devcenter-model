@@ -19,21 +19,21 @@ public class DefaultAppApi implements AppApi {
     }
 
     @Override
-    public ExecutionResult<Boolean> authenticate(String appId, String appSecret, String redirectUri) {
+    public ExecutionResult<AppModel> authenticate(String appId, String appSecret, String redirectUri) {
         AppModel appModel = appDAO.findById(appId);
         if (appModel != null && appModel.getAppId().equals(appId) && appModel.getAppSecret().equals(appSecret) && appModel.getRedirectUri().equals(redirectUri)) {
-            return ExecutionResult.newInstance(Boolean.class).success("", true);
+            return ExecutionResult.newInstance(AppModel.class).success("Authenticated successfully", appModel);
         }
-        return ExecutionResult.newInstance(Boolean.class).fail("", false);
+        return ExecutionResult.newInstance(AppModel.class).fail("Fail to authenticate");
     }
 
     @Override
-    public ExecutionResult<Boolean> authenticate(String appId, String redirectUri) {
+    public ExecutionResult<AppModel> authenticate(String appId, String redirectUri) {
         AppModel appModel = appDAO.findById(appId);
         if (appModel != null && appModel.getAppId().equals(appId) && appModel.getRedirectUri().equals(redirectUri)) {
-            return ExecutionResult.newInstance(Boolean.class).success("", true);
+            return ExecutionResult.newInstance(AppModel.class).success("Authenticated successfully", appModel);
         }
-        return ExecutionResult.newInstance(Boolean.class).fail("", false);
+        return ExecutionResult.newInstance(AppModel.class).fail("Fail to authenticate");
     }
 
 

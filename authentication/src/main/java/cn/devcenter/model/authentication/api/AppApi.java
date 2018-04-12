@@ -13,7 +13,7 @@ public interface AppApi {
      * @param redirectUri
      * @return
      */
-    ExecutionResult<Boolean> authenticate(String appId, String appSecret, String redirectUri);
+    ExecutionResult<AppModel> authenticate(String appId, String appSecret, String redirectUri);
 
     /**
      * App authenticate
@@ -22,6 +22,6 @@ public interface AppApi {
      * @param redirectUri
      * @return
      */
-    ExecutionResult<Boolean> authenticate(String appId, String redirectUri);
+    ExecutionResult<AppModel> authenticate(String appId, String redirectUri);
 
 }

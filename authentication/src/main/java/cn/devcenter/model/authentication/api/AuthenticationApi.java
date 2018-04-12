@@ -12,6 +12,6 @@ public interface AuthenticationApi {
      * @param secret
      * @return
      */
-    ExecutionResult<Boolean> authenticate(String id, String secret);
+    ExecutionResult<Authentication> authenticate(String id, String secret);
 
 }
