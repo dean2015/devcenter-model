@@ -5,10 +5,10 @@ package cn.devcenter.model.cache;
  *
  * @author gaosong
  */
-public interface CacheManager {
+public interface CacheManager<K, V> {
 
-    <K, V> Cache<K, V> getCache(String name) throws CacheException;
+    Cache<K, V> getCache(String name) throws CacheException;
 
-    <K, V> Cache<K, V> getCache() throws CacheException;
+    Cache<K, V> getCache() throws CacheException;
 
 }
